@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Belajar PHP TKJ</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<h2 align="center">DATA SISWA TKJ</h2>
+<div class="button_link"><a href="tambah.php">Input Data</a></div>
+<!-- <a href="tambah.php">+ TAMBAH MAHASISWA</a> -->
+
+<table class="tbl-qa">
+<thead>
+<tr>
+<th class="table-header" wnimmhsth="20%">No</th>
+<th class="table-header" wnimmhsth="20%">Nama</th>
+<th class="table-header" wnimmhsth="20%"> NIS </th>
+<th class="table-header" wnimmhsth="20%"> Alamat </th>
+<th class="table-header" wnimmhsth="20%" colspan="2">Aksi</th>
+</tr>
+</thead>
+
+<?php
+include "koneksi.php";
+$no = 1;
+$data = mysqli_query($con,"select * from t_siswa"); while($d = mysqli_fetch_array($data)){
+?>
+<tr class="table-row">
+<td class="table-row"><?php echo $no++; ?></td>
+<td class="table-row"><?php echo $d['nama'];
+ 
+?></td>
+
+?></td>
+
+?></td>
+ 
+
+<td class="table-row"><?php echo $d['nis'];
+
+<td class="table-row"><?php echo $d['alamat'];
+
+<td class="table-row">
+<a href="edit.php?id=<?php echo $d['id'];
+ 
+?>"><button type="button" >Edit</button></a>
+<a href="hapus.php?id=<?php echo $d['id']; ?>" onClick="return confirm('Apaka yakin data akan dihapus ?')"/><button type="button" >Hapus</button></a>
+
+<!-- <a href="hapus.php?id=<?php echo $d['id'];
+?>">HAPUS</a> -->
+</tr>
+<?php
+</td>
+}
+?>
+</table>
+</body>
+</html>
